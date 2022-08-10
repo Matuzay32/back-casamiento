@@ -16,7 +16,7 @@ export class SpotifyService {
     @InjectModel('Spotifys') private spotifyModel: Model<SpotifyInterface>,
   ) {}
 
-  async getAllSpotify(): Promise<any> {
+  async motrarLinksSpotify(): Promise<any> {
     try {
       return await this.spotifyModel.find({});
     } catch (error) {
@@ -24,6 +24,22 @@ export class SpotifyService {
         {
           status: HttpStatus.NOT_FOUND,
           error: `No se encontraron links de spotify`,
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+  }
+
+  async cargarLinksSpotify(
+    likCancion: CreateSpotifyDto,
+  ): Promise<SpotifyInterface> {
+    try {
+      return await this.spotifyModel.create(likCancion);
+    } catch (error) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: `Fue imposible crear el link`,
         },
         HttpStatus.NOT_FOUND,
       );
