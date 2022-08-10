@@ -11,7 +11,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     MongooseModule.forRoot('mongodb://mongo/mymongodatabase'),
     SpotifyModule,
   ],
-  controllers: [AppController, SpotifyController],
-  providers: [AppService, SpotifyService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
