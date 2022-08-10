@@ -16,7 +16,7 @@ export class SpotifyService {
     @InjectModel('Spotifys') private spotifyModel: Model<SpotifyInterface>,
   ) {}
 
-  async getAllSpotify() {
+  async getAllSpotify(): Promise<any> {
     try {
       return await this.spotifyModel.find({});
     } catch (error) {
