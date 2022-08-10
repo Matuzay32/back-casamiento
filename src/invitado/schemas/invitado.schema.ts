@@ -16,6 +16,10 @@ export const InvitadoSchema = new Schema({
     require: true,
   },
 
+  estado: {
+    type: String,
+    default: 'Confirmado',
+  },
   createdAt: {
     type: Date,
     default: Date.now,

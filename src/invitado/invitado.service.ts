@@ -14,7 +14,7 @@ export class InvitadoService {
   constructor(
     @InjectModel('Invitados') private invitadoModel: Model<InterfaceInvitado>,
   ) {}
-
+  //Muestra todos los invitados
   async mostrarTodosLosInvitados(): Promise<any> {
     try {
       return await this.invitadoModel.find({});
@@ -29,6 +29,7 @@ export class InvitadoService {
     }
   }
 
+  //Crea un invitado
   async cargarInvitadoCofirmado(
     invitado: CreateInvitadoDto,
   ): Promise<InterfaceInvitado> {
