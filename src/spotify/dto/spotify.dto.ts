@@ -1,4 +1,4 @@
-export default class CreateSpotifyDto {
+export class CreateSpotifyDto {
   linkCancion: string;
   createdAt: Date;
 }
