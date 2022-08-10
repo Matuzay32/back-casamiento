@@ -15,7 +15,7 @@ export class SpotifyService {
   constructor(
     @InjectModel('Spotifys') private spotifyModel: Model<SpotifyInterface>,
   ) {}
-
+  //Obtiene todos los links de spotify
   async motrarLinksSpotify(): Promise<any> {
     try {
       return await this.spotifyModel.find({});
@@ -29,6 +29,7 @@ export class SpotifyService {
       );
     }
   }
+  //Crea los links de spotify
 
   async cargarLinksSpotify(
     likCancion: CreateSpotifyDto,
@@ -39,7 +40,7 @@ export class SpotifyService {
       throw new HttpException(
         {
           status: HttpStatus.NOT_FOUND,
-          error: `Fue imposible crear el link`,
+          error: `Fue imposible crear el link de spotify`,
         },
         HttpStatus.NOT_FOUND,
       );
