@@ -12,7 +12,15 @@ export class FechaService {
 
   async obtenerFecha(): Promise<FechaInterface> {
     try {
-      return await this.fechaModel.findOne({});
+      const found = await this.fechaModel.findOne({});
+      if (found) {
+        return found;
+      } else {
+        return {
+          fecha: '2022-11-11',
+          hora: '11:30',
+        };
+      }
     } catch (error) {
       throw new HttpException(
         {
