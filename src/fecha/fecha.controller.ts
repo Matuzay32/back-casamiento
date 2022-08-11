@@ -7,7 +7,7 @@ import { FechaInterface } from './interface/fecha.interface';
 export class FechaController {
   constructor(private readonly fechaService: FechaService) {}
   @Get()
-  obtenerFecha(): Promise<FechaInterface[]> {
+  obtenerFecha(): Promise<FechaInterface> {
     return this.fechaService.obtenerFecha();
   }
 

@@ -10,9 +10,9 @@ export class FechaService {
     @InjectModel('Fechas') private fechaModel: Model<FechaInterface>,
   ) {}
 
-  async obtenerFecha(): Promise<FechaInterface[]> {
+  async obtenerFecha(): Promise<FechaInterface> {
     try {
-      return await this.fechaModel.find({});
+      return await this.fechaModel.findOne({});
     } catch (error) {
       throw new HttpException(
         {
@@ -23,8 +23,9 @@ export class FechaService {
       );
     }
   }
-  async cargarFecha(fecha: FechaDto) {
+  async cargarFecha(fecha: FechaDto): Promise<FechaInterface> {
     try {
+      await this.fechaModel.deleteMany({});
       return await this.fechaModel.create(fecha);
     } catch (error) {
       throw new HttpException(
