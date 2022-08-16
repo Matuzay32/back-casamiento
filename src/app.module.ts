@@ -5,6 +5,7 @@ import { SpotifyModule } from './spotify/spotify.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { InvitadoModule } from './invitado/invitado.module';
 import { FechaModule } from './fecha/fecha.module';
+import { GaleriaModule } from './galeria/galeria.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { FechaModule } from './fecha/fecha.module';
     SpotifyModule,
     InvitadoModule,
     FechaModule,
+    GaleriaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
