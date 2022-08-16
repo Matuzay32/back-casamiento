@@ -9,11 +9,19 @@ export class GaleriaService {
     @InjectModel('Galerias') private galeriaModel: Model<GaleriaInterface>,
   ) {}
 
-  async getAll(): Promise<any[]> {
-    const created = await this.galeriaModel.create([
-      { nombre: 'prueba01' },
-      { nombre: 'prueba02' },
-    ]);
-    return await this.galeriaModel.find({});
+  async createImage(createCarDto: GaleriaDto): Promise<GaleriaInterface> {
+    try {
+      const imagenesCreadas = await this.galeriaModel.create(createCarDto);
+
+      return imagenesCreadas;
+    } catch (err) {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: `Imposible crear auto`,
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 }

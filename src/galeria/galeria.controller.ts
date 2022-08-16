@@ -32,9 +32,10 @@ import { GaleriaDto } from './dto/galeria.dto';
 export class GaleriaController {
   constructor(private readonly galeriaService: GaleriaService) {}
 
-  @Get()
-  prueba(): Promise<any[]> {
-    return this.galeriaService.getAll();
+  //CREATE CAR
+  @Post()
+  createCar(@Body() createPhoto: GaleriaDto): Promise<GaleriaInterface> {
+    return this.galeriaService.createImage(createPhoto);
   }
 
   //Upload one file
