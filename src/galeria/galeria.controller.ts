@@ -32,6 +32,11 @@ import { GaleriaDto } from './dto/galeria.dto';
 export class GaleriaController {
   constructor(private readonly galeriaService: GaleriaService) {}
 
+  @Get()
+  prueba(): Promise<any[]> {
+    return this.galeriaService.getAll();
+  }
+
   //Upload one file
   @Post('file')
   @UseInterceptors(
@@ -65,6 +70,7 @@ export class GaleriaController {
   }
 
   //Upload multiple files
+
   @Post('files')
   @UseInterceptors(
     AnyFilesInterceptor({
@@ -91,7 +97,7 @@ export class GaleriaController {
   )
   uploadFiles(@UploadedFiles() files: Array<Express.Multer.File>) {
     return files.map((item) => {
-      return { name: item.filename };
+      return { nombre: item.filename };
     });
   }
 
