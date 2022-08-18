@@ -42,7 +42,7 @@ export class GaleriaController {
     return this.galeriaService.ObtenerImagenesGaleria();
   }
 
-  //Upload one file
+  //UPLOAD ONE FILE
   @Post('file')
   @UseInterceptors(
     FileInterceptor('file', {
@@ -70,11 +70,11 @@ export class GaleriaController {
   )
   uploadFile(@UploadedFiles() file: Express.Multer.File) {
     return {
-      succses: `Upload photo `,
+      nombre: file.filename,
     };
   }
 
-  //Upload multiple files
+  //UPLOAD MULTIPLE FILES
 
   @Post('files')
   @UseInterceptors(
