@@ -14,11 +14,11 @@ export class FotoCentralService {
   //Crea la imagen central
   //Primero borra la anterior luego la crea
   async createImage(
-    createCarDto: FotoCentralDto,
+    fotoCentral: FotoCentralDto,
   ): Promise<FotoCentralInterface> {
     try {
       await this.fotoCentralModel.deleteMany({});
-      return await this.fotoCentralModel.create(createCarDto);
+      return await this.fotoCentralModel.create(fotoCentral);
     } catch (err) {
       throw new HttpException(
         {
@@ -30,5 +30,15 @@ export class FotoCentralService {
     }
   }
 
-  async mostrarImagenCentral() {}
+  async mostrarImagenCentral(): Promise<FotoCentralInterface> {
+    try {
+      const foundFotoCentral = await this.fotoCentralModel.findOne({});
+      return foundFotoCentral;
+    } catch (error) {
+      throw new HttpException(
+        { error: 'No se pudo mostrar la imagen', status: HttpStatus.NOT_FOUND },
+        HttpStatus.NOT_FOUND,
+      );
+    }
+  }
 }
