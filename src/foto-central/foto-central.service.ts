@@ -34,7 +34,13 @@ export class FotoCentralService {
   async mostrarImagenCentral(): Promise<FotoCentralInterface> {
     try {
       const foundFotoCentral = await this.fotoCentralModel.findOne({});
-      return foundFotoCentral;
+      if (foundFotoCentral) {
+        return foundFotoCentral;
+      } else {
+        return {
+          nombre: '',
+        };
+      }
     } catch (error) {
       throw new HttpException(
         { error: 'No se pudo mostrar la imagen', status: HttpStatus.NOT_FOUND },
