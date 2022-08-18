@@ -6,6 +6,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { InvitadoModule } from './invitado/invitado.module';
 import { FechaModule } from './fecha/fecha.module';
 import { GaleriaModule } from './galeria/galeria.module';
+import { FotoCentralService } from './foto-central/foto-central.service';
+import { FotoCentralController } from './foto-central/foto-central.controller';
+import { FotoCentralModule } from './foto-central/foto-central.module';
 
 @Module({
   imports: [
@@ -14,6 +17,7 @@ import { GaleriaModule } from './galeria/galeria.module';
     InvitadoModule,
     FechaModule,
     GaleriaModule,
+    FotoCentralModule,
   ],
   controllers: [AppController],
   providers: [AppService],

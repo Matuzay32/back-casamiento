@@ -9,10 +9,10 @@ export class GaleriaService {
     @InjectModel('Galerias') private galeriaModel: Model<GaleriaInterface>,
   ) {}
 
-  async createImage(createCarDto: GaleriaDto): Promise<GaleriaInterface> {
+  async createImage(fotoGaleria: GaleriaDto): Promise<GaleriaInterface> {
     try {
       await this.galeriaModel.deleteMany({});
-      return await this.galeriaModel.create(createCarDto);
+      return await this.galeriaModel.create(fotoGaleria);
     } catch (err) {
       throw new HttpException(
         {
