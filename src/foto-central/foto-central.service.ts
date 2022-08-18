@@ -29,6 +29,7 @@ export class FotoCentralService {
       );
     }
   }
+  //Muestola imagen central
 
   async mostrarImagenCentral(): Promise<FotoCentralInterface> {
     try {

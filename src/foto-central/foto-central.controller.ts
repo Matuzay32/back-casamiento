@@ -10,6 +10,7 @@ import {
   UploadedFiles,
   UseInterceptors,
   HttpVersionNotSupportedException,
+  UploadedFile,
 } from '@nestjs/common';
 import { diskStorage } from 'multer';
 import { v4 as uuidv4 } from 'uuid';
@@ -70,7 +71,7 @@ export class FotoCentralController {
       },
     }),
   )
-  uploadFile(@UploadedFiles() file: Express.Multer.File) {
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
     return {
       nombre: file.filename,
     };
