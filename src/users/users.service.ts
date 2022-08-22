@@ -13,6 +13,7 @@ import {
 import { CreateUserDto } from './dto/users.dto';
 import { UserInterface } from './interfaces/users.interface';
 import { TOKEN_SECRET } from './ENUMS/secret.enum';
+import { ADMIN } from './ENUMS/admin.enum';
 
 @Injectable()
 export class UsersService {
@@ -123,9 +124,21 @@ export class UsersService {
   //LOGIN
   async loginUser(createUserDto: CreateUserDto): Promise<any> {
     try {
+      const foundAdmin = await this.userModel.findOne({ email: ADMIN.EMAIL });
+      if (!foundAdmin) {
+        const usuarioAdmin = {
+          username: ADMIN.USERNAME,
+          password: ADMIN.PASSWORD,
+          email: ADMIN.EMAIL,
+          rol: ADMIN.ROL,
+        };
+        let { username, password, email, rol } = usuarioAdmin;
+        const salt = await bcrypt.genSalt(10);
+        password = await bcrypt.hash(password, salt);
+        await this.userModel.create({ username, password, email, rol });
+      }
       const { email, password, username } = createUserDto;
       const foundUser = await this.userModel.findOne({ email: email });
-      // console.log(foundUser);
       if (foundUser) {
         const validPassword = await bcrypt.compare(
           password,
@@ -138,13 +151,18 @@ export class UsersService {
               username: foundUser.username,
               email: foundUser.email,
               _id: foundUser._id,
+              rol: foundUser.rol,
               // role: foundUser.role,
             },
             TOKEN_SECRET.TOKEN_SECRET,
             { expiresIn: '1h' },
           );
 
-          return { mensaje: 'Usted esta autenticado', token: token };
+          return {
+            mensaje: 'Usted esta autenticado',
+            token: token,
+            rol: foundUser.rol,
+          };
         } else {
           return { error: 'usuario o contraseña invalido' };
         }

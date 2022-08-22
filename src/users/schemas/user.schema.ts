@@ -18,7 +18,7 @@ export const UserSchema = new Schema({
   },
   rol: {
     type: String,
-    default: 'user',
+    default: 'USER',
   },
 
   // cars: [{ type: Schema.Types.ObjectId, ref: 'Cars' }],
