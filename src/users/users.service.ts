@@ -71,10 +71,10 @@ export class UsersService {
     userToUpdate: CreateUserDto,
   ): Promise<any> {
     try {
-      let { username, password, email } = userToUpdate;
+      let { username, password, email, rol } = userToUpdate;
       const salt = await bcrypt.genSalt(10);
       password = await bcrypt.hash(password, salt);
-      userToUpdate = { username, password, email };
+      userToUpdate = { username, password, email, rol };
       console.log(userToUpdate);
 
       return await this.userModel.findByIdAndUpdate(id, userToUpdate);
