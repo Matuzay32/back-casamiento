@@ -71,6 +71,12 @@ export class UsersService {
     userToUpdate: CreateUserDto,
   ): Promise<any> {
     try {
+      let { username, password, email } = userToUpdate;
+      const salt = await bcrypt.genSalt(10);
+      password = await bcrypt.hash(password, salt);
+      userToUpdate = { username, password, email };
+      console.log(userToUpdate);
+
       return await this.userModel.findByIdAndUpdate(id, userToUpdate);
     } catch (err) {
       throw new HttpException(
