@@ -114,7 +114,7 @@ export class UsersService {
       const found = await this.userModel.findOne({ email: email });
       if (found) {
         return {
-          thisUserIsRegistered: 'This user already exists',
+          usuarioExistente: 'El usuario ya existe',
         };
       } else if (!found) {
         const userCreated = await this.userModel.create({
@@ -160,12 +160,12 @@ export class UsersService {
             { expiresIn: '1h' },
           );
 
-          return { message: 'You are now authenticated', token: token };
+          return { mensaje: 'Usted esta autenticado', token: token };
         } else {
-          return { error: 'Invalid Password or User' };
+          return { error: 'usuario o contraseña invalido' };
         }
       } else {
-        return { error: 'User does not exist' };
+        return { error: 'El usuario no existe' };
       }
     } catch (error) {}
   }
