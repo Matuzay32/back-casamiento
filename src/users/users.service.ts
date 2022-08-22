@@ -18,7 +18,7 @@ import { TOKEN_SECRET } from './ENUMS/secret.enum';
 export class UsersService {
   constructor(@InjectModel('Users') private userModel: Model<UserInterface>) {}
 
-  //FIND ALL USERS
+  //ENCONTRAR TODOS LOS USUARIOS
   async getAllUsers(): Promise<UserInterface[]> {
     try {
       return await this.userModel.find({});
@@ -33,29 +33,7 @@ export class UsersService {
     }
   }
 
-  //FIND USER FOR NAME
-  async getUsersWithName(query): Promise<UserInterface[]> {
-    const { name } = query;
-
-    try {
-      return await this.userModel.find({
-        $or: [
-          { email: { $regex: name, $options: 'i' } },
-          { username: { $regex: name, $options: 'i' } },
-        ],
-      });
-    } catch (error) {
-      throw new HttpException(
-        {
-          status: HttpStatus.NOT_FOUND,
-          error: `Users not found`,
-        },
-        HttpStatus.NOT_FOUND,
-      );
-    }
-  }
-
-  //FIND USER FOR ID
+  //ENCONTRAR USUARIO POR ID
   async getOneUserforId(id: string): Promise<UserInterface> {
     try {
       const found = await this.userModel.findById(id);
@@ -71,7 +49,7 @@ export class UsersService {
     }
   }
 
-  //DELETE CAR FOR ID
+  //BORRAR USUARIO POR ID
   async deleteOneUserforId(id: string): Promise<UserInterface> {
     try {
       const found = await this.userModel.findByIdAndRemove(id);
@@ -87,7 +65,7 @@ export class UsersService {
     }
   }
 
-  //UPDATE USER FOR ID
+  //ACTUALIZAR USUARIO POR ID
   async updateOneUserforId(
     id: string,
     userToUpdate: CreateUserDto,
@@ -105,7 +83,7 @@ export class UsersService {
     }
   }
 
-  //CREATE USER CON Bcrypt
+  //CREAR USUARIO CON BCRYPT
   async createUser(createUserDto: CreateUserDto): Promise<any> {
     let { username, password, email } = createUserDto;
     const salt = await bcrypt.genSalt(10);
@@ -136,7 +114,7 @@ export class UsersService {
     }
   }
 
-  //login
+  //LOGIN
   async loginUser(createUserDto: CreateUserDto): Promise<any> {
     try {
       const { email, password, username } = createUserDto;
