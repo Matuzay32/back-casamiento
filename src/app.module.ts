@@ -9,6 +9,7 @@ import { GaleriaModule } from './galeria/galeria.module';
 import { FotoCentralService } from './foto-central/foto-central.service';
 import { FotoCentralController } from './foto-central/foto-central.controller';
 import { FotoCentralModule } from './foto-central/foto-central.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FotoCentralModule } from './foto-central/foto-central.module';
     FechaModule,
     GaleriaModule,
     FotoCentralModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
