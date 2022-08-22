@@ -20,6 +20,4 @@ export const UserSchema = new Schema({
     type: String,
     default: 'USER',
   },
-
-  // cars: [{ type: Schema.Types.ObjectId, ref: 'Cars' }],
 });

@@ -24,4 +24,25 @@ import { UsersModule } from './users/users.module';
   controllers: [AppController],
   providers: [AppService],
 })
+
+// DESPUES TENGO QUE PROBARLO CON EL TOKEN
+// export class AppModule implements NestModule {
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer
+//       .apply(LoggerMiddleware)
+//       .exclude(
+//         { path: 'cars', method: RequestMethod.GET },
+//         'cars/findAll',
+//         { path: 'cars', method: RequestMethod.GET },
+//         'cars/findAll/name',
+//         { path: 'cars', method: RequestMethod.GET },
+//         'cars/findOneForId/(.*)',
+//         { path: 'cars', method: RequestMethod.GET },
+//         'cars/uploads/(.*)',
+//         { path: 'cars', method: RequestMethod.POST },
+//         'cars/files',
+//       )
+//       .forRoutes(CarsController);
+//   }
+// }
 export class AppModule {}
