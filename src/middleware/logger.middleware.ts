@@ -22,7 +22,7 @@ export class LoggerMiddleware implements NestMiddleware {
         next();
       } else if (verified.rol != 'ADMIN' && !verified) {
         res.status(401).json({
-          error: `Tiene que estar Registrado y ser ADMIN para disponer de esta ruta`,
+          error: `Tiene que estar registrado y ser ADMIN para disponer de esta ruta`,
         });
       }
     } catch (error) {
