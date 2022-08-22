@@ -24,6 +24,10 @@ export class LoggerMiddleware implements NestMiddleware {
         res.status(401).json({
           error: `Tiene que estar registrado y ser ADMIN para disponer de esta ruta`,
         });
+      } else if (verified.rol != 'ADMIN') {
+        res.status(401).json({
+          mensaje: 'Usted no tiene privilegios de administrador',
+        });
       }
     } catch (error) {
       console.log(
