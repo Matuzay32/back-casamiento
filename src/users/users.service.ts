@@ -42,7 +42,7 @@ export class UsersService {
       throw new HttpException(
         {
           status: HttpStatus.BAD_REQUEST,
-          error: `User with id ${id} does not exist`,
+          error: `El usuario con el ${id} no existe`,
         },
         HttpStatus.FORBIDDEN,
       );
@@ -58,7 +58,7 @@ export class UsersService {
       throw new HttpException(
         {
           status: HttpStatus.NOT_FOUND,
-          error: `User with id ${id} does not exist`,
+          error: `El usuario con el ${id} no existe`,
         },
         HttpStatus.NOT_FOUND,
       );
@@ -82,7 +82,7 @@ export class UsersService {
       throw new HttpException(
         {
           status: HttpStatus.NOT_FOUND,
-          error: `User with id ${id} does not exist`,
+          error: `El usuario con el ${id} no existe`,
         },
         HttpStatus.NOT_FOUND,
       );
