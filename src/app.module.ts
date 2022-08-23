@@ -40,11 +40,15 @@ export class AppModule implements NestModule {
     consumer
       .apply(LoggerMiddleware)
       .exclude(
+        { path: 'spotify', method: RequestMethod.GET },
+        { path: 'invitado', method: RequestMethod.GET },
         { path: 'spotify', method: RequestMethod.POST },
         { path: 'invitado', method: RequestMethod.POST },
         { path: 'fecha', method: RequestMethod.GET },
         { path: 'fotoCentral', method: RequestMethod.GET },
+        { path: 'fotoCentral/uploads/:imagename', method: RequestMethod.GET },
         { path: 'galeria', method: RequestMethod.GET },
+        { path: 'galeria/uploads/:imagename', method: RequestMethod.GET },
       )
       .forRoutes(
         SpotifyController,
