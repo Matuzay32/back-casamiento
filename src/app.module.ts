@@ -42,7 +42,7 @@ export class AppModule implements NestModule {
       .exclude(
         { path: 'spotify', method: RequestMethod.POST },
         { path: 'invitado', method: RequestMethod.POST },
-        { path: 'fecha', method: RequestMethod.POST },
+        { path: 'fecha', method: RequestMethod.GET },
         // { path: 'cars', method: RequestMethod.GET },
         // 'cars/findAll/name',
         // { path: 'cars', method: RequestMethod.GET },
