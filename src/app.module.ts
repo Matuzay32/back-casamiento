@@ -35,28 +35,28 @@ import { FotoCentralController } from './foto-central/foto-central.controller';
 })
 
 // DESPUES TENGO QUE PROBARLO CON EL TOKEN
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(LoggerMiddleware)
-      .exclude(
-        { path: 'spotify', method: RequestMethod.GET },
-        { path: 'invitado', method: RequestMethod.GET },
-        { path: 'spotify', method: RequestMethod.POST },
-        { path: 'invitado', method: RequestMethod.POST },
-        { path: 'fecha', method: RequestMethod.GET },
-        { path: 'fotoCentral', method: RequestMethod.GET },
-        { path: 'fotoCentral/uploads/:imagename', method: RequestMethod.GET },
-        { path: 'galeria', method: RequestMethod.GET },
-        { path: 'galeria/uploads/:imagename', method: RequestMethod.GET },
-      )
-      .forRoutes(
-        SpotifyController,
-        InvitadoController,
-        FechaController,
-        GaleriaController,
-        FotoCentralController,
-      );
-  }
-}
-// export class AppModule {}
+// export class AppModule implements NestModule {
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer
+//       .apply(LoggerMiddleware)
+//       .exclude(
+//         { path: 'spotify', method: RequestMethod.GET },
+//         { path: 'invitado', method: RequestMethod.GET },
+//         { path: 'spotify', method: RequestMethod.POST },
+//         { path: 'invitado', method: RequestMethod.POST },
+//         { path: 'fecha', method: RequestMethod.GET },
+//         { path: 'fotoCentral', method: RequestMethod.GET },
+//         { path: 'fotoCentral/uploads/:imagename', method: RequestMethod.GET },
+//         { path: 'galeria', method: RequestMethod.GET },
+//         { path: 'galeria/uploads/:imagename', method: RequestMethod.GET },
+//       )
+//       .forRoutes(
+//         SpotifyController,
+//         InvitadoController,
+//         FechaController,
+//         GaleriaController,
+//         FotoCentralController,
+//       );
+//   }
+// }
+export class AppModule {}

@@ -39,6 +39,7 @@ export class FotoCentralService {
       } else {
         return {
           nombre: '',
+          posicionFotoCentralEnY: 50,
         };
       }
     } catch (error) {
