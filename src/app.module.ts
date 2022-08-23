@@ -11,14 +11,14 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { InvitadoModule } from './invitado/invitado.module';
 import { FechaModule } from './fecha/fecha.module';
 import { GaleriaModule } from './galeria/galeria.module';
-import { FotoCentralService } from './foto-central/foto-central.service';
-import { FotoCentralController } from './foto-central/foto-central.controller';
 import { FotoCentralModule } from './foto-central/foto-central.module';
 import { UsersModule } from './users/users.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
 import { SpotifyController } from './spotify/spotify.controller';
 import { InvitadoController } from './invitado/invitado.controller';
 import { FechaController } from './fecha/fecha.controller';
+import { GaleriaController } from './galeria/galeria.controller';
+import { FotoCentralController } from './foto-central/foto-central.controller';
 
 @Module({
   imports: [
@@ -43,16 +43,16 @@ export class AppModule implements NestModule {
         { path: 'spotify', method: RequestMethod.POST },
         { path: 'invitado', method: RequestMethod.POST },
         { path: 'fecha', method: RequestMethod.GET },
-        // { path: 'cars', method: RequestMethod.GET },
-        // 'cars/findAll/name',
-        // { path: 'cars', method: RequestMethod.GET },
-        // 'cars/findOneForId/(.*)',
-        // { path: 'cars', method: RequestMethod.GET },
-        // 'cars/uploads/(.*)',
-        // { path: 'cars', method: RequestMethod.POST },
-        // 'cars/files',
+        { path: 'fotoCentral', method: RequestMethod.GET },
+        { path: 'galeria', method: RequestMethod.GET },
       )
-      .forRoutes(SpotifyController, InvitadoController, FechaController);
+      .forRoutes(
+        SpotifyController,
+        InvitadoController,
+        FechaController,
+        GaleriaController,
+        FotoCentralController,
+      );
   }
 }
 // export class AppModule {}
