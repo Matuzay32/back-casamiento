@@ -5,4 +5,8 @@ export const FotoCentralSchema = new Schema({
     type: String,
     require: true,
   },
+  posicionFotoCentralEnY: {
+    type: Number,
+    default: 50,
+  },
 });
