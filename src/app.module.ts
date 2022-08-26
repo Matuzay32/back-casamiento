@@ -48,7 +48,7 @@ export class AppModule implements NestModule {
         { path: 'fotoCentral', method: RequestMethod.GET },
         { path: 'fotoCentral/uploads/:imagename', method: RequestMethod.GET },
         { path: 'fotoCentral/file', method: RequestMethod.POST },
-        { path: 'galeria/file', method: RequestMethod.POST },
+        { path: 'galeria/files', method: RequestMethod.POST },
         { path: 'galeria', method: RequestMethod.GET },
         { path: 'galeria/uploads/:imagename', method: RequestMethod.GET },
       )
